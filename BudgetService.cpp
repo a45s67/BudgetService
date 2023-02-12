@@ -14,7 +14,6 @@ double BudgetService::Query(std::chrono::time_point<std::chrono::system_clock> s
 
     auto budgets = this->budget_repo->GetAll();
     double total = 0;
-    std::cout<<"hello";
     while (start <= end) {
         total += GetBudgetOfDate(start);
         start += std::chrono::days(1);
@@ -41,7 +40,7 @@ int BudgetService::GetBudgetOfMonth(std::string year_month_str) {
 
 int BudgetService::GetDayOfMonth(std::chrono::time_point<std::chrono::system_clock> time_point) {
 
-    auto dp = floor<std::chrono::days>(time_point);
+    auto dp = ceil<std::chrono::days>(time_point);
     std::chrono::year_month_day ymd{dp};
 
     std::chrono::year_month_day_last ym_last_day{ymd.year(), std::chrono::month_day_last(ymd.month())};

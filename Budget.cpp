@@ -19,7 +19,7 @@ std::chrono::system_clock::time_point GetDate(int year, int month, int day) {
 
 std::string GetYearMonthStr(std::chrono::time_point<std::chrono::system_clock> time_point) {
     //https://stackoverflow.com/a/15958113/12764484
-    auto dp = floor<std::chrono::days>(time_point);
+    auto dp = round<std::chrono::days>(time_point);
     std::chrono::year_month_day ymd{dp};
     if (unsigned(ymd.month())<10){
         return std::to_string(int(ymd.year())) + "0" +
