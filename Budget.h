@@ -7,15 +7,21 @@
 
 #include <vector>
 #include <string>
+#include <chrono>
 
 std::chrono::system_clock::time_point GetDate(int year, int month, int day);
 
+std::tm GetDate(std::chrono::time_point<std::chrono::system_clock> time_point);
+
+std::string GetYearMonthStr(std::chrono::time_point<std::chrono::system_clock> time_point);
+
 class Budget {
 public:
-    Budget(std::string ym, int amount){
+    Budget(std::string ym, int amount) {
         YearMonth = ym;
         Amount = amount;
     }
+
     std::string YearMonth;
     int Amount;
 };
@@ -28,6 +34,7 @@ public:
 class BudgetRepo : public IBudgetRepo {
 public:
     BudgetRepo(std::vector<Budget> budgets);
+
     std::vector<Budget> GetAll() override;
 
 private:

@@ -17,9 +17,15 @@ public:
                  std::chrono::time_point<std::chrono::system_clock> end);
 
 private:
-    std::string GetYearMonth(std::chrono::time_point<std::chrono::system_clock> date);
+    //std::string GetYearMonth(std::chrono::time_point<std::chrono::system_clock> date);
 
     IBudgetRepo *budget_repo;
+
+    double GetBudgetOfDate(std::chrono::time_point<std::chrono::system_clock> point);
+
+    int GetBudgetOfMonth(std::string year_month_str);
+
+    int GetDayOfMonth(std::chrono::time_point<std::chrono::system_clock> time_point);
 };
 
 #endif //BUDGETSERVICE_BUDGETSERVICE_H
